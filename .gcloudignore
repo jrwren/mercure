@@ -16,6 +16,7 @@
 node_modules
 #!include:.gitignore
 
-*.md
+*.adoc
 LICENSE
 Makefile
+.github/

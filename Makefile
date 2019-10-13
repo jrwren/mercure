@@ -1,15 +1,18 @@
+PROJECT:=winter-break
 REGION:=europe-west1
+NAME:=IsItTheWinterBreakYet
 
-deploy-function:
-	gcloud functions deploy IsItTheWinterBreakYet \
-		--entry-point IsItTheWinterBreakYet \
-		--region=$(REGION) \
-		--memory=128MB \
-		--max-instances=5 \
-		--runtime go111 \
-		--trigger-http
+configure:
+	gcloud config set project $(PROJECT)
+	gcloud config set functions/region $(REGION)
 
-delete-function:
-	gcloud functions delete IsItTheWinterBreakYet --region=$(REGION)
+deploy-function: configure
+	gcloud functions deploy $(NAME) --entry-point=$(NAME) --memory=128MB --max-instances=5 --runtime go111 --trigger-http
 
-.PHONY: deploy-function delete-function
+delete-function: configure
+	gcloud functions delete $(NAME)
+
+run-function:
+	curl -sL bit.ly/is-it-winter-break-yet | jq
+
+.PHONY: configure deploy-function delete-function run-function

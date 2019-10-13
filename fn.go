@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	startTime = time.Date(2019, time.October, 14, 0, 0, 0, 0, time.UTC)
-	endTime   = time.Date(2020, time.April, 14, 0, 0, 0, 0, time.UTC)
+	startTime = time.Date(2019, time.October, 13, 23, 0, 0, 0, time.UTC)
+	endTime   = time.Date(2020, time.April, 12, 23, 0, 0, 0, time.UTC)
 )
 
 func IsItTheWinterBreakYet(w http.ResponseWriter, r *http.Request) {
