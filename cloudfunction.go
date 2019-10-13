@@ -2,10 +2,10 @@
 package p
 
 import (
-	"fmt"
+    "fmt"
     "strconv"
     "time"
-	"net/http"
+    "net/http"
 )
 
 var (
@@ -21,5 +21,5 @@ func IsItTheWinterBreakYet(w http.ResponseWriter, r *http.Request) {
 
 func isWinterBreakYet() bool {
     callTime := time.Now()
- 	return startTime.Before(callTime) && endTime.After(callTime)
+    return currentStartTime.Before(callTime) && currentEndTime.After(callTime)
 }
