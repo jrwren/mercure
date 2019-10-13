@@ -16,5 +16,6 @@
 node_modules
 #!include:.gitignore
 
+*.md
 LICENSE
-README.md
+Makefile
