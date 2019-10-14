@@ -1,6 +1,7 @@
 PROJECT:=winter-break
 REGION:=europe-west1
 NAME:=IsItTheWinterBreakYet
+FUNCTION_URL:=https://$(REGION)-$(PROJECT).cloudfunctions.net/$(NAME)
 
 configure:
 	gcloud config set project $(PROJECT)
@@ -12,7 +13,10 @@ deploy-function: configure
 delete-function: configure
 	gcloud functions delete $(NAME)
 
-run-function:
-	curl -sL bit.ly/is-it-winter-break-yet | jq
+get-function-url:
+	@echo $(FUNCTION_URL)
 
-.PHONY: configure deploy-function delete-function run-function
+run-function:
+	@curl -sL $(FUNCTION_URL) | jq
+
+.PHONY: configure deploy-function delete-function get-function-url run-function
